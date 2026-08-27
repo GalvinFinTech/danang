@@ -881,11 +881,12 @@
         let customImages = {};
         
         try {
-            for (let i = 1; i <= 10; i++) {
+            // Clear all previous cache versions to force fresh local images
+            for (let i = 1; i <= 20; i++) {
                 localStorage.removeItem('trip_custom_images_v' + i);
             }
             localStorage.removeItem('trip_custom_images');
-            const saved = localStorage.getItem('trip_custom_images_v11');
+            const saved = localStorage.getItem('trip_custom_images_v12');
             if (saved) {
                 const parsed = JSON.parse(saved);
                 Object.keys(parsed).forEach(k => {
