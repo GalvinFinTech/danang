@@ -107,7 +107,6 @@
                 <span id="countdown-timer" class="font-mono text-xs sm:text-sm font-bold text-amber-300">Đang tính toán...</span>
             </div>
 
-            <!-- Quick Info Stat Badges -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-4xl mx-auto text-left">
                 <div class="bg-slate-900/60 p-3.5 rounded-2xl border border-white/15 backdrop-blur-md">
                     <div class="text-[11px] text-cyan-300 font-medium mb-0.5"><i class="fa-regular fa-calendar-days mr-1.5"></i>Thời gian</div>
@@ -163,44 +162,69 @@
             </div>
             
             <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
-                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group cursor-pointer" onclick="openPhotoModal('Bãi biển Mỹ Khê', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80', 'Bãi biển Mỹ Khê trung tâm sầm uất, nhộn nhịp về đêm, gần Cầu Rồng & bến du thuyền.', 'https://maps.google.com/?cid=12140416972045610816')">
-                    <div class="text-xs font-bold text-cyan-200 mb-1 flex items-center justify-between">
-                        <span>1. Mỹ Khê</span>
-                        <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group relative">
+                    <div class="cursor-pointer" onclick="openPhotoModal('beach_mykhe')">
+                        <div class="text-xs font-bold text-cyan-200 mb-1 flex items-center justify-between">
+                            <span>1. Mỹ Khê</span>
+                            <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                        </div>
+                        <div class="text-[11px] text-slate-200">Sầm uất, dạo biển đêm nhộn nhịp.</div>
                     </div>
-                    <div class="text-[11px] text-slate-200">Sầm uất, dạo biển đêm nhộn nhịp.</div>
+                    <button onclick="openChangePhotoModal('beach_mykhe', event)" class="mt-2 text-[10px] px-2 py-0.5 rounded-md bg-white/20 hover:bg-amber-400 hover:text-slate-900 text-white font-semibold flex items-center gap-1 transition">
+                        <i class="fa-solid fa-pen-to-square"></i> Đổi ảnh
+                    </button>
                 </div>
 
-                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group cursor-pointer" onclick="openPhotoModal('Bãi biển Bắc Mỹ An', 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1000&q=80', 'Bắc Mỹ An có bờ cát rộng mịn, lý tưởng đón bình minh và dạo biển đêm yên tĩnh.', 'https://maps.google.com/?cid=6206667797779322932')">
-                    <div class="text-xs font-bold text-amber-300 mb-1 flex items-center justify-between">
-                        <span>2. Bắc Mỹ An</span>
-                        <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group relative">
+                    <div class="cursor-pointer" onclick="openPhotoModal('beach_bacmyan')">
+                        <div class="text-xs font-bold text-amber-300 mb-1 flex items-center justify-between">
+                            <span>2. Bắc Mỹ An</span>
+                            <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                        </div>
+                        <div class="text-[11px] text-slate-200">Cát mịn, sóng êm, đón BÌNH MINH.</div>
                     </div>
-                    <div class="text-[11px] text-slate-200">Cát mịn, sóng êm, đón BÌNH MINH.</div>
+                    <button onclick="openChangePhotoModal('beach_bacmyan', event)" class="mt-2 text-[10px] px-2 py-0.5 rounded-md bg-white/20 hover:bg-amber-400 hover:text-slate-900 text-white font-semibold flex items-center gap-1 transition">
+                        <i class="fa-solid fa-pen-to-square"></i> Đổi ảnh
+                    </button>
                 </div>
 
-                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group cursor-pointer" onclick="openPhotoModal('Bãi biển Non Nước', 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80', 'Bãi biển Non Nước nằm dưới chân núi Ngũ Hành Sơn, bờ biển rộng hoang sơ.', 'https://maps.google.com/?cid=7216701684225598983')">
-                    <div class="text-xs font-bold text-emerald-300 mb-1 flex items-center justify-between">
-                        <span>3. Non Nước</span>
-                        <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group relative">
+                    <div class="cursor-pointer" onclick="openPhotoModal('beach_nonnuoc')">
+                        <div class="text-xs font-bold text-emerald-300 mb-1 flex items-center justify-between">
+                            <span>3. Non Nước</span>
+                            <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                        </div>
+                        <div class="text-[11px] text-slate-200">Chân Ngũ Hành Sơn, thoáng đãng.</div>
                     </div>
-                    <div class="text-[11px] text-slate-200">Chân Ngũ Hành Sơn, thoáng đãng.</div>
+                    <button onclick="openChangePhotoModal('beach_nonnuoc', event)" class="mt-2 text-[10px] px-2 py-0.5 rounded-md bg-white/20 hover:bg-amber-400 hover:text-slate-900 text-white font-semibold flex items-center gap-1 transition">
+                        <i class="fa-solid fa-pen-to-square"></i> Đổi ảnh
+                    </button>
                 </div>
 
-                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group cursor-pointer" onclick="openPhotoModal('Bãi biển An Bằng (Hội An)', 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1000&q=80', 'Cổng biển Hội An tuyệt đẹp với không gian beach bar mộc mạc thư thái.', 'https://maps.google.com/?cid=17081483334039810543')">
-                    <div class="text-xs font-bold text-amber-200 mb-1 flex items-center justify-between">
-                        <span>4. An Bằng</span>
-                        <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group relative">
+                    <div class="cursor-pointer" onclick="openPhotoModal('beach_anbang')">
+                        <div class="text-xs font-bold text-amber-200 mb-1 flex items-center justify-between">
+                            <span>4. An Bằng</span>
+                            <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                        </div>
+                        <div class="text-[11px] text-slate-200">Cổng biển Hội An, thư thái lãng mạn.</div>
                     </div>
-                    <div class="text-[11px] text-slate-200">Cổng biển Hội An, thư thái lãng mạn.</div>
+                    <button onclick="openChangePhotoModal('beach_anbang', event)" class="mt-2 text-[10px] px-2 py-0.5 rounded-md bg-white/20 hover:bg-amber-400 hover:text-slate-900 text-white font-semibold flex items-center gap-1 transition">
+                        <i class="fa-solid fa-pen-to-square"></i> Đổi ảnh
+                    </button>
                 </div>
 
-                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group cursor-pointer col-span-2 sm:col-span-1" onclick="openPhotoModal('Rạn Nam Ô', 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80', 'Rạn đá tự nhiên hoang sơ phía Bắc Vịnh Đà Nẵng, khung cảnh vô cùng điện ảnh.', 'https://maps.google.com/?cid=14733572167197901445')">
-                    <div class="text-xs font-bold text-cyan-300 mb-1 flex items-center justify-between">
-                        <span>5. Rạn Nam Ô</span>
-                        <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group relative col-span-2 sm:col-span-1">
+                    <div class="cursor-pointer" onclick="openPhotoModal('beach_namo')">
+                        <div class="text-xs font-bold text-cyan-300 mb-1 flex items-center justify-between">
+                            <span>5. Rạn Nam Ô</span>
+                            <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                        </div>
+                        <div class="text-[11px] text-slate-200">Bãi đá rạn tự nhiên hoang sơ tuyệt đẹp.</div>
                     </div>
-                    <div class="text-[11px] text-slate-200">Bãi đá rạn tự nhiên hoang sơ tuyệt đẹp.</div>
+                    <button onclick="openChangePhotoModal('beach_namo', event)" class="mt-2 text-[10px] px-2 py-0.5 rounded-md bg-white/20 hover:bg-amber-400 hover:text-slate-900 text-white font-semibold flex items-center gap-1 transition">
+                        <i class="fa-solid fa-pen-to-square"></i> Đổi ảnh
+                    </button>
                 </div>
             </div>
         </div>
@@ -225,11 +249,16 @@
                 
                 <!-- STEP 1 -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('December Homestay 2', 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80', 'December Homestay 2 nằm tại 19 Bằng Lăng 5, Hải Châu, cực gần Cầu Rồng, phòng ốc mộc mạc ấm cúng.', 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e')">
-                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="December Homestay 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=December+Homestay+2'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d1-step1" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="December Homestay 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d1_step1')" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=December+Homestay+2'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 1</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>12:00 – 13:30</span>
+                        
+                        <!-- Custom Change Photo Button -->
+                        <button onclick="openChangePhotoModal('d1_step1')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -245,11 +274,15 @@
 
                 <!-- STEP 2 -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Ẩm Thực Chợ Cồn', 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80', 'Khu ẩm thực Chợ Cồn nức tiếng với ốc hút hấp sả, bánh bèo chén, nem lụi nướng và chè sầu.', 'https://maps.google.com/?cid=5423764435960124639')">
-                        <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80" alt="Chợ Cồn" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Am+Thuc+Cho+Con'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d1-step2" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80" alt="Chợ Cồn" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d1_step2')" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Am+Thuc+Cho+Con'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 2</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>13:30 – 14:30</span>
+
+                        <button onclick="openChangePhotoModal('d1_step2')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -266,11 +299,15 @@
 
                 <!-- STEP 3 HIGHLIGHT SUNSET LAP AN LAGOON -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border-2 border-amber-400 bg-gradient-to-br from-amber-50/70 to-orange-50/40 flex flex-col">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Hoàng Hôn Đầm Lập An', 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80', 'Khoảnh khắc hoàng hôn dát vàng cực đỉnh trên Đầm Lập An, khi mặt trời lặn sau dãy núi Bạch Mã phẳng lặng như gương.', 'https://maps.google.com/?cid=5553166078561578657')">
-                        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80" alt="Đầm Lập An Hoàng Hôn" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/d97706/ffffff?text=Hoang+Hon+Dam+Lap+An'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d1-step3" src="https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?auto=format&fit=crop&w=800&q=80" alt="Đầm Lập An Hoàng Hôn" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d1_step3')" onerror="this.src='https://placehold.co/800x500/d97706/ffffff?text=Hoang+Hon+Dam+Lap+An'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-amber-600 text-white shadow-md">STEP 3 ★ HOÀNG HÔN DÁT VÀNG</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-amber-300"></i>14:30 – 18:00</span>
+
+                        <button onclick="openChangePhotoModal('d1_step3')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -286,11 +323,15 @@
 
                 <!-- STEP 4 -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Hải Sản Ven Biển', 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80', 'Bữa tối hải sản tươi ngon sát biển: chip chip hấp sả, mực nướng mắm thơm lừng, lẩu hải sản nhỏ.', 'https://maps.google.com/?cid=12140416972045610816')">
-                        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80" alt="Hải Sản" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Hai+San+Ven+Bien'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d1-step4" src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80" alt="Hải Sản" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d1_step4')" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Hai+San+Ven+Bien'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 4</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>18:00 – 20:00</span>
+
+                        <button onclick="openChangePhotoModal('d1_step4')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -304,13 +345,17 @@
                     </div>
                 </div>
 
-                <!-- STEP 5 HIGHLIGHT NIGHT CRUISE -->
+                <!-- STEP 5 HIGHLIGHT NIGHT CRUISE & DRAGON BRIDGE -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border-2 border-ocean-500 bg-gradient-to-br from-sky-50/70 to-cyan-50/40 flex flex-col">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Du Thuyền Sông Hàn & Cầu Rồng Phun Lửa', 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80', 'Du thuyền sông Hàn góc nhìn độc bản ngắm thành phố lung linh và xem Cầu Rồng phun lửa trực tiếp lúc 21:00.', 'https://maps.google.com/?cid=4330735287103870185')">
-                        <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80" alt="Du Thuyền Sông Hàn" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0369a1/ffffff?text=Du+Thuyen+Song+Han'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d1-step5" src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80" alt="Du Thuyền Sông Hàn & Cầu Rồng Phun Lửa" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d1_step5')" onerror="this.src='https://placehold.co/800x500/0369a1/ffffff?text=Cau+Rong+Da+Nang'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-ocean-600 text-white shadow-md">STEP 5 ★ ĐÊM SÔNG HÀN</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>20:15 – 21:15</span>
+
+                        <button onclick="openChangePhotoModal('d1_step5')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -326,11 +371,15 @@
 
                 <!-- STEP 6 -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Chợ Đêm Sơn Trà & Mỹ Khê Đêm', 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80', 'Không khí náo nhiệt Chợ đêm Sơn Trà ăn vặt, kết hợp dạo bờ sóng biển Mỹ Khê về đêm.', 'https://maps.google.com/?cid=12140416972045610816')">
-                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80" alt="Chợ Đêm Sơn Trà" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Cho+Dem+Son+Tra'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d1-step6" src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80" alt="Chợ Đêm Sơn Trà" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d1_step6')" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Cho+Dem+Son+Tra'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 6</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>21:15 – 22:30</span>
+
+                        <button onclick="openChangePhotoModal('d1_step6')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -364,11 +413,15 @@
                 
                 <!-- DAY 2 STEP 1 -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border-2 border-amber-300 bg-gradient-to-br from-amber-50/60 to-yellow-50/30 flex flex-col">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Bình Minh Biển Bắc Mỹ An', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80', 'Khung cảnh mặt trời mọc rực rỡ trên bờ cát mịn bãi biển Bắc Mỹ An yên tĩnh và bình yên.', 'https://maps.google.com/?cid=6206667797779322932')">
-                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Bắc Mỹ An Sunrise" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/d97706/ffffff?text=Binh+Minh+Bac+My+An'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d2-step1" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Bắc Mỹ An Sunrise" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d2_step1')" onerror="this.src='https://placehold.co/800x500/d97706/ffffff?text=Binh+Minh+Bac+My+An'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-amber-600 text-white">STEP 1 ★ BÌNH MINH</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-amber-300"></i>05:00 – 06:30</span>
+
+                        <button onclick="openChangePhotoModal('d2_step1')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -384,11 +437,15 @@
 
                 <!-- DAY 2 STEP 2 -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Ghềnh Bàng Sơn Trà', 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80', 'Ghềnh Bàng với bãi đá tự nhiên nhấp nhô tuyệt đẹp, nước biển xanh trong vút mắt.', 'https://maps.google.com/?cid=18071023613830469926')">
-                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Ghềnh Bàng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Ghenh+Bang+Son+Tra'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d2-step2" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Ghềnh Bàng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d2_step2')" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Ghenh+Bang+Son+Tra'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 2</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>07:30 – 11:30</span>
+
+                        <button onclick="openChangePhotoModal('d2_step2')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -404,11 +461,15 @@
 
                 <!-- DAY 2 STEP 3 -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Nghỉ Trưa Homestay', 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80', 'Quay về December Homestay 2 (19 Bằng Lăng 5) tắm rửa thay đồ, nghỉ ngơi tránh nắng trưa nạp năng lượng.', 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e')">
-                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Nghỉ trưa" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Nghi+Trua+Homestay'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d2-step3" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Nghỉ trưa" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d2_step3')" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Nghi+Trua+Homestay'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 3</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>11:30 – 13:30</span>
+
+                        <button onclick="openChangePhotoModal('d2_step3')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -424,11 +485,15 @@
 
                 <!-- DAY 2 STEP 4 -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Rừng Dừa Bảy Mẫu', 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80', 'Trải nghiệm chèo thuyền thúng múa thúng kịch tính xanh mướt Rừng dừa Cẩm Thanh.', 'https://maps.google.com/?cid=8318215151515312323')">
-                        <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80" alt="Rừng Dừa Bảy Mẫu" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Rung+Dua+Bay+Mau'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d2-step4" src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80" alt="Rừng Dừa Bảy Mẫu & Thuyền Thúng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d2_step4')" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Rung+Dua+Bay+Mau'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 4</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>13:30 – 16:30</span>
+
+                        <button onclick="openChangePhotoModal('d2_step4')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -442,13 +507,17 @@
                     </div>
                 </div>
 
-                <!-- DAY 2 STEP 5 HIGHLIGHT HOI AN SUNSET & NIGHT -->
+                <!-- DAY 2 STEP 5 HIGHLIGHT HOI AN LANTERNS & BOAT -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border-2 border-amber-400 bg-gradient-to-br from-amber-50/60 to-orange-50/30 flex flex-col lg:col-span-2">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Phố Cổ Hội An & Thả Hoa Đăng Sông Hoài', 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1000&q=80', 'Hoàng hôn rêu phong phố cổ Hội An kết hợp đi thuyền gỗ thả hoa đăng lung linh trên sông Hoài.', 'https://maps.google.com/?cid=16041945140456063900')">
-                        <img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1000&q=80" alt="Hội An Hoa Đăng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/1000x500/d97706/ffffff?text=Pho+Co+Hoi+An'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d2-step5" src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1000&q=80" alt="Hội An Hoa Đăng & Đèn Lồng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d2_step5')" onerror="this.src='https://placehold.co/1000x500/d97706/ffffff?text=Pho+Co+Hoi+An'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-amber-600 text-white shadow-md">STEP 5 ★ HOÀNG HÔN & ĐÊM PHỐ CỔ</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-amber-300"></i>16:30 – 20:00</span>
+
+                        <button onclick="openChangePhotoModal('d2_step5')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -482,11 +551,15 @@
                 
                 <!-- DAY 3 STEP 1 -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Sơn Trà Marina (Santorini)', 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80', 'Quán cafe phong cách Santorini bên vách biển Sơn Trà, góc view biển cực sang mịn.', 'https://maps.google.com/?cid=10168728368308795887')">
-                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80" alt="Sơn Trà Marina" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Son+Tra+Marina'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d3-step1" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80" alt="Bán đảo Sơn Trà & Santorini Marina" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d3_step1')" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Son+Tra+Marina'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 1</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>08:00 – 11:30</span>
+
+                        <button onclick="openChangePhotoModal('d3_step1')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -502,11 +575,15 @@
 
                 <!-- DAY 3 STEP 2 -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border-2 border-amber-400 bg-gradient-to-br from-amber-50/60 to-orange-50/30 flex flex-col">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Trả Phòng 12:00 & Mì Quảng', 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80', 'Thưởng thức bát Mì Quảng Bà Mua đậm đà và quay về trả phòng homestay đúng 12:00 trưa.', 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e')">
-                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80" alt="Check-out & Mì Quảng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/d97706/ffffff?text=Mi+Quang+Ba+Mua'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d3-step2" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80" alt="Check-out & Mì Quảng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d3_step2')" onerror="this.src='https://placehold.co/800x500/d97706/ffffff?text=Mi+Quang+Ba+Mua'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-amber-600 text-white">STEP 2 ★ TRẢ PHÒNG</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-amber-300"></i>11:30 – 12:30</span>
+
+                        <button onclick="openChangePhotoModal('d3_step2')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -522,11 +599,15 @@
 
                 <!-- DAY 3 STEP 3 -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Cafe Sân Vườn Trình', 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80', 'Không gian cà phê sân vườn hoài cổ, nhâm nhi cafe muối hoặc trà cốt dừa thư thả.', 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e')">
-                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80" alt="Cafe Sân Vườn" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Trinh+Ca+Phe'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d3-step3" src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80" alt="Cafe Sân Vườn" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d3_step3')" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Trinh+Ca+Phe'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 3</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>12:30 – 14:00</span>
+
+                        <button onclick="openChangePhotoModal('d3_step3')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -542,11 +623,15 @@
 
                 <!-- DAY 3 STEP 4 & 5 -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col lg:col-span-2">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Ghềnh Nam Ô & Hải Sản', 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80', 'Khu rạn đá Nam Ô hoang sơ rực rỡ dưới nắng chiều, địa điểm lý tưởng dạo biển chụp ảnh.', 'https://maps.google.com/?cid=14733572167197901445')">
-                        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80" alt="Rạn Nam Ô" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/1000x500/0c4a6e/ffffff?text=Ran+Nam+O'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d3-step4" src="https://images.unsplash.com/photo-1468413253725-0d5181091126?auto=format&fit=crop&w=1000&q=80" alt="Rạn Nam Ô" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d3_step4')" onerror="this.src='https://placehold.co/1000x500/0c4a6e/ffffff?text=Ran+Nam+O'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 4 & 5</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>14:00 – 18:30</span>
+
+                        <button onclick="openChangePhotoModal('d3_step4')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -562,11 +647,15 @@
 
                 <!-- DAY 3 STEP 6 -->
                 <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
-                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Sân Bay Đà Nẵng', 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80', 'Chia tay tại Sân bay Đà Nẵng lúc 19:15 sau chuyến đi 3 ngày 2 đêm đong đầy kỷ niệm.', 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e')">
-                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80" alt="Tiễn bay" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=San+Bay+Da+Nang'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="relative h-44 overflow-hidden group">
+                        <img id="img-d3-step6" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80" alt="Tiễn bay" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="openPhotoModal('d3_step6')" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=San+Bay+Da+Nang'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
                         <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 6</span>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>18:30 – 19:15</span>
+
+                        <button onclick="openChangePhotoModal('d3_step6')" class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full bg-white/90 hover:bg-amber-400 text-slate-900 shadow-md backdrop-blur-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> Đổi ảnh
+                        </button>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
@@ -717,6 +806,48 @@
         </div>
     </div>
 
+    <!-- CUSTOM EDIT IMAGE MODAL -->
+    <div id="edit-image-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl overflow-hidden max-w-md w-full shadow-2xl relative border border-slate-200 p-6 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 class="font-extrabold text-slate-900 text-lg flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square text-amber-500"></i> Thay Ảnh Cho Địa Điểm
+                </h3>
+                <button onclick="closeChangePhotoModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center hover:bg-slate-200">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Preview box -->
+            <div class="relative h-40 w-full rounded-2xl overflow-hidden bg-slate-100 border border-slate-200">
+                <img id="edit-modal-preview" src="" alt="Preview" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Option A: Paste URL -->
+            <div class="space-y-1">
+                <label class="text-xs font-bold text-slate-700">Cách 1: Dán đường link ảnh từ web (URL)</label>
+                <input type="text" id="edit-modal-url-input" placeholder="https://..." class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-ocean-500">
+            </div>
+
+            <div class="text-center text-xs font-semibold text-slate-400">Hoặc</div>
+
+            <!-- Option B: Upload File -->
+            <div class="space-y-1">
+                <label class="text-xs font-bold text-slate-700">Cách 2: Tải ảnh trực tiếp từ thiết bị</label>
+                <input type="file" id="edit-modal-file-input" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-ocean-50 file:text-ocean-700 hover:file:bg-ocean-100 cursor-pointer">
+            </div>
+
+            <div class="pt-2 flex items-center gap-2">
+                <button onclick="applyNewImage()" class="flex-1 py-2.5 rounded-xl bg-ocean-600 hover:bg-ocean-700 text-white font-bold text-xs transition shadow-md">
+                    <i class="fa-solid fa-check mr-1"></i> Áp Dụng Thay Đổi
+                </button>
+                <button onclick="resetDefaultImage()" class="px-3 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition">
+                    Khôi phục
+                </button>
+            </div>
+        </div>
+    </div>
+
     <footer class="bg-slate-900 text-slate-400 text-center py-8 text-xs border-t border-slate-800 mt-auto">
         <div class="max-w-6xl mx-auto px-4 space-y-2">
             <p class="font-display font-semibold text-slate-200 text-sm">Chuyến Khám Phá Nắng Vàng & Biển Xanh Đà Nẵng - Hội An</p>
@@ -725,12 +856,165 @@
     </footer>
 
     <script>
-        // Photo Modal Logic
-        function openPhotoModal(title, imgSrc, desc, mapUrl) {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-img').src = imgSrc;
-            document.getElementById('modal-desc').innerText = desc;
-            document.getElementById('modal-map-link').href = mapUrl;
+        // Location Master Data
+        const locationData = {
+            'beach_mykhe': {
+                title: 'Bãi biển Mỹ Khê',
+                desc: 'Bãi biển Mỹ Khê trung tâm sầm uất, nhộn nhịp về đêm, gần Cầu Rồng & bến du thuyền.',
+                mapUrl: 'https://maps.google.com/?cid=12140416972045610816',
+                defaultImg: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80'
+            },
+            'beach_bacmyan': {
+                title: 'Bãi biển Bắc Mỹ An',
+                desc: 'Bắc Mỹ An có bờ cát rộng mịn, lý tưởng đón bình minh và dạo biển đêm yên tĩnh.',
+                mapUrl: 'https://maps.google.com/?cid=6206667797779322932',
+                defaultImg: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80'
+            },
+            'beach_nonnuoc': {
+                title: 'Bãi biển Non Nước',
+                desc: 'Bãi biển Non Nước nằm dưới chân núi Ngũ Hành Sơn, bờ biển rộng hoang sơ.',
+                mapUrl: 'https://maps.google.com/?cid=7216701684225598983',
+                defaultImg: 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1000&q=80'
+            },
+            'beach_anbang': {
+                title: 'Bãi biển An Bằng (Hội An)',
+                desc: 'Cổng biển Hội An tuyệt đẹp với không gian beach bar mộc mạc thư thái.',
+                mapUrl: 'https://maps.google.com/?cid=17081483334039810543',
+                defaultImg: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80'
+            },
+            'beach_namo': {
+                title: 'Rạn Nam Ô',
+                desc: 'Rạn đá tự nhiên hoang sơ phía Bắc Vịnh Đà Nẵng, khung cảnh vô cùng điện ảnh.',
+                mapUrl: 'https://maps.google.com/?cid=14733572167197901445',
+                defaultImg: 'https://images.unsplash.com/photo-1468413253725-0d5181091126?auto=format&fit=crop&w=1000&q=80'
+            },
+            'd1_step1': {
+                title: 'December Homestay 2',
+                desc: 'December Homestay 2 nằm tại 19 Bằng Lăng 5, Hải Châu, cực gần Cầu Rồng, phòng ốc mộc mạc ấm cúng.',
+                mapUrl: 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e',
+                defaultImg: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80'
+            },
+            'd1_step2': {
+                title: 'Ẩm Thực Chợ Cồn',
+                desc: 'Khu ẩm thực Chợ Cồn nức tiếng với ốc hút hấp sả, bánh bèo chén, nem lụi nướng và chè sầu.',
+                mapUrl: 'https://maps.google.com/?cid=5423764435960124639',
+                defaultImg: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80'
+            },
+            'd1_step3': {
+                title: 'Hoàng Hôn Đầm Lập An',
+                desc: 'Khoảnh khắc hoàng hôn dát vàng cực đỉnh trên Đầm Lập An, khi mặt trời lặn sau dãy núi Bạch Mã phẳng lặng như gương.',
+                mapUrl: 'https://maps.google.com/?cid=5553166078561578657',
+                defaultImg: 'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?auto=format&fit=crop&w=800&q=80'
+            },
+            'd1_step4': {
+                title: 'Hải Sản Ven Biển',
+                desc: 'Bữa tối hải sản tươi ngon sát biển: chip chip hấp sả, mực nướng mắm thơm lừng, lẩu hải sản nhỏ.',
+                mapUrl: 'https://maps.google.com/?cid=12140416972045610816',
+                defaultImg: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80'
+            },
+            'd1_step5': {
+                title: 'Du Thuyền Sông Hàn & Cầu Rồng Phun Lửa',
+                desc: 'Du thuyền sông Hàn góc nhìn độc bản ngắm thành phố lung linh và xem Cầu Rồng phun lửa trực tiếp lúc 21:00.',
+                mapUrl: 'https://maps.google.com/?cid=4330735287103870185',
+                defaultImg: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80'
+            },
+            'd1_step6': {
+                title: 'Chợ Đêm Sơn Trà & Mỹ Khê Đêm',
+                desc: 'Không khí náo nhiệt Chợ đêm Sơn Trà ăn vặt, kết hợp dạo bờ sóng biển Mỹ Khê về đêm.',
+                mapUrl: 'https://maps.google.com/?cid=12140416972045610816',
+                defaultImg: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80'
+            },
+            'd2_step1': {
+                title: 'Bình Minh Biển Bắc Mỹ An',
+                desc: 'Khung cảnh mặt trời mọc rực rỡ trên bờ cát mịn bãi biển Bắc Mỹ An yên tĩnh và bình yên.',
+                mapUrl: 'https://maps.google.com/?cid=6206667797779322932',
+                defaultImg: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'
+            },
+            'd2_step2': {
+                title: 'Ghềnh Bàng Sơn Trà',
+                desc: 'Ghềnh Bàng với bãi đá tự nhiên nhấp nhô tuyệt đẹp, nước biển xanh trong vút mắt.',
+                mapUrl: 'https://maps.google.com/?cid=18071023613830469926',
+                defaultImg: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80'
+            },
+            'd2_step3': {
+                title: 'Nghỉ Trưa Homestay',
+                desc: 'Quay về December Homestay 2 (19 Bằng Lăng 5) tắm rửa thay đồ, nghỉ ngơi tránh nắng trưa nạp năng lượng.',
+                mapUrl: 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e',
+                defaultImg: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80'
+            },
+            'd2_step4': {
+                title: 'Rừng Dừa Bảy Mẫu (Chèo Thuyền Thúng)',
+                desc: 'Trải nghiệm chèo thuyền thúng dập dềnh và xem múa thúng kịch tính xanh mướt Rừng dừa Cẩm Thanh.',
+                mapUrl: 'https://maps.google.com/?cid=8318215151515312323',
+                defaultImg: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80'
+            },
+            'd2_step5': {
+                title: 'Phố Cổ Hội An & Thả Hoa Đăng Sông Hoài',
+                desc: 'Hoàng hôn rêu phong phố cổ Hội An kết hợp đi thuyền gỗ thả hoa đăng lung linh trên sông Hoài.',
+                mapUrl: 'https://maps.google.com/?cid=16041945140456063900',
+                defaultImg: 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1000&q=80'
+            },
+            'd3_step1': {
+                title: 'Bán Đảo Sơn Trà & Sơn Trà Marina',
+                desc: 'Quán cafe phong cách Santorini bên vách biển Sơn Trà, góc view biển vút mắt cực sang mịn.',
+                mapUrl: 'https://maps.google.com/?cid=10168728368308795887',
+                defaultImg: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80'
+            },
+            'd3_step2': {
+                title: 'Trả Phòng 12:00 & Mì Quảng',
+                desc: 'Thưởng thức bát Mì Quảng Bà Mua đậm đà và quay về trả phòng homestay đúng 12:00 trưa.',
+                mapUrl: 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e',
+                defaultImg: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80'
+            },
+            'd3_step3': {
+                title: 'Cafe Sân Vườn Trình',
+                desc: 'Không gian cà phê sân vườn hoài cổ, nhâm nhi cafe muối hoặc trà cốt dừa thư thả.',
+                mapUrl: 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e',
+                defaultImg: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80'
+            },
+            'd3_step4': {
+                title: 'Ghềnh Nam Ô & Hải Sản',
+                desc: 'Khu rạn đá Nam Ô hoang sơ rực rỡ dưới nắng chiều, địa điểm lý tưởng dạo biển chụp ảnh.',
+                mapUrl: 'https://maps.google.com/?cid=14733572167197901445',
+                defaultImg: 'https://images.unsplash.com/photo-1468413253725-0d5181091126?auto=format&fit=crop&w=1000&q=80'
+            },
+            'd3_step6': {
+                title: 'Sân Bay Đà Nẵng',
+                desc: 'Chia tay tại Sân bay Đà Nẵng lúc 19:15 sau chuyến đi 3 ngày 2 đêm đong đầy kỷ niệm.',
+                mapUrl: 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e',
+                defaultImg: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80'
+            }
+        };
+
+        // Custom Images Storage Engine (In-Memory + localStorage fallback)
+        let customImages = {};
+        try {
+            const saved = localStorage.getItem('trip_custom_images_v2');
+            if (saved) customImages = JSON.parse(saved);
+        } catch(e) {}
+
+        function getActiveImage(key) {
+            return customImages[key] || (locationData[key] ? locationData[key].defaultImg : '');
+        }
+
+        // Apply Custom Images to DOM on load
+        function applyImagesToDOM() {
+            Object.keys(locationData).forEach(key => {
+                const imgEl = document.getElementById('img-' + key.replace('_', '-'));
+                if (imgEl) {
+                    imgEl.src = getActiveImage(key);
+                }
+            });
+        }
+
+        // Lightbox Modal Logic
+        function openPhotoModal(key) {
+            const data = locationData[key];
+            if (!data) return;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-img').src = getActiveImage(key);
+            document.getElementById('modal-desc').innerText = data.desc;
+            document.getElementById('modal-map-link').href = data.mapUrl;
             document.getElementById('photo-modal').classList.remove('hidden');
         }
 
@@ -738,12 +1022,82 @@
             document.getElementById('photo-modal').classList.add('hidden');
         }
 
-        // Close modal when clicking outside content
         document.getElementById('photo-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closePhotoModal();
+            if (e.target === this) closePhotoModal();
+        });
+
+        // Change Photo Modal Logic
+        let currentEditingKey = null;
+
+        function openChangePhotoModal(key, event) {
+            if (event) event.stopPropagation();
+            currentEditingKey = key;
+            const currentImg = getActiveImage(key);
+            document.getElementById('edit-modal-preview').src = currentImg;
+            document.getElementById('edit-modal-url-input').value = customImages[key] || '';
+            document.getElementById('edit-modal-file-input').value = '';
+            document.getElementById('edit-image-modal').classList.remove('hidden');
+        }
+
+        function closeChangePhotoModal() {
+            document.getElementById('edit-image-modal').classList.add('hidden');
+            currentEditingKey = null;
+        }
+
+        document.getElementById('edit-modal-file-input').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    document.getElementById('edit-modal-preview').src = evt.target.result;
+                };
+                reader.readAsDataURL(file);
             }
         });
+
+        document.getElementById('edit-modal-url-input').addEventListener('input', function(e) {
+            if (e.target.value.trim()) {
+                document.getElementById('edit-modal-preview').src = e.target.value.trim();
+            }
+        });
+
+        function applyNewImage() {
+            if (!currentEditingKey) return;
+            const fileInput = document.getElementById('edit-modal-file-input');
+            const urlInput = document.getElementById('edit-modal-url-input').value.trim();
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    saveAndSetImage(currentEditingKey, evt.target.result);
+                    closeChangePhotoModal();
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else if (urlInput) {
+                saveAndSetImage(currentEditingKey, urlInput);
+                closeChangePhotoModal();
+            } else {
+                closeChangePhotoModal();
+            }
+        }
+
+        function resetDefaultImage() {
+            if (!currentEditingKey) return;
+            delete customImages[currentEditingKey];
+            try {
+                localStorage.setItem('trip_custom_images_v2', JSON.stringify(customImages));
+            } catch(e) {}
+            applyImagesToDOM();
+            closeChangePhotoModal();
+        }
+
+        function saveAndSetImage(key, imgSrc) {
+            customImages[key] = imgSrc;
+            try {
+                localStorage.setItem('trip_custom_images_v2', JSON.stringify(customImages));
+            } catch(e) {}
+            applyImagesToDOM();
+        }
 
         // Tab Switching Logic
         function switchTab(tabId) {
@@ -812,8 +1166,12 @@
             document.getElementById('countdown-timer').innerText = `${days} Ngày ${hours} Giờ ${minutes} Phút`;
         }
 
-        updateCountdown();
-        setInterval(updateCountdown, 60000);
+        // Initialize on load
+        window.onload = function() {
+            applyImagesToDOM();
+            updateCountdown();
+            setInterval(updateCountdown, 60000);
+        };
     </script>
 </body>
 </html>
