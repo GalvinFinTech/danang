@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành Trình Khám Phá Đà Nẵng - Hội An (3N2Đ)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ocean: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            800: '#0c4a6e',
+                            900: '#082f49',
+                        },
+                        sand: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Outfit"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+        }
+        .hero-pattern {
+            background-color: #0c4a6e;
+            background-image: radial-gradient(#38bdf8 1.2px, transparent 1.2px), radial-gradient(#f59e0b 1.2px, #0c4a6e 1.2px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .badge-glow {
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+        }
+        .img-card {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+        .img-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -6px rgba(12, 74, 110, 0.16);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500 selection:text-white">
+
+    <header class="relative hero-pattern text-white overflow-hidden py-12 sm:py-16 px-4 sm:px-8 shadow-xl">
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-cyan-400/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-amber-500/20 text-amber-200 border border-amber-400/30 mb-4 backdrop-blur-md badge-glow">
+                <i class="fa-solid fa-compass text-amber-300"></i> Lịch Trình Khám Phá • 30/08 - 01/09/2026
+            </div>
+            
+            <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-3 text-white leading-tight">
+                Hành Trình Trải Nghiệm <br class="hidden sm:inline">
+                <span class="bg-gradient-to-r from-cyan-300 via-amber-200 to-amber-400 bg-clip-text text-transparent">Đà Nẵng • Hội An</span>
+            </h1>
+            
+            <p class="text-slate-200 text-xs sm:text-base max-w-2xl mx-auto font-normal leading-relaxed mb-6">
+                3 Ngày 2 Đêm chinh phục đèo Hải Vân lộng gió, ngắm hoàng hôn Đầm Lập An dát vàng, du thuyền Sông Hàn xem Cầu Rồng phun lửa, thả hoa đăng Phố Cổ Hội An và dạo biển Sơn Trà - Nam Ô.
+            </p>
+
+            <!-- Countdown Timer -->
+            <div class="inline-flex items-center gap-3 bg-slate-900/80 px-4 py-2 rounded-2xl border border-white/15 backdrop-blur-md mb-6">
+                <span class="text-xs text-slate-300 uppercase tracking-wider font-semibold">Đếm ngược khởi hành:</span>
+                <span id="countdown-timer" class="font-mono text-xs sm:text-sm font-bold text-amber-300">Đang tính toán...</span>
+            </div>
+
+            <!-- Quick Info Stat Badges -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-4xl mx-auto text-left">
+                <div class="bg-slate-900/60 p-3.5 rounded-2xl border border-white/15 backdrop-blur-md">
+                    <div class="text-[11px] text-cyan-300 font-medium mb-0.5"><i class="fa-regular fa-calendar-days mr-1.5"></i>Thời gian</div>
+                    <div class="text-xs sm:text-sm font-bold text-white">30/08 – 01/09 (3N2Đ)</div>
+                </div>
+                <div class="bg-slate-900/60 p-3.5 rounded-2xl border border-white/15 backdrop-blur-md">
+                    <div class="text-[11px] text-amber-300 font-medium mb-0.5"><i class="fa-solid fa-motorcycle mr-1.5"></i>Phương tiện</div>
+                    <div class="text-xs sm:text-sm font-bold text-white">Xe máy cá nhân / thuê</div>
+                </div>
+                <div class="bg-slate-900/60 p-3.5 rounded-2xl border border-white/15 backdrop-blur-md">
+                    <div class="text-[11px] text-emerald-300 font-medium mb-0.5"><i class="fa-solid fa-house-user mr-1.5"></i>Lưu trú</div>
+                    <div class="text-xs sm:text-sm font-bold text-white">December Homestay 2</div>
+                </div>
+                <div class="bg-slate-900/60 p-3.5 rounded-2xl border border-white/15 backdrop-blur-md">
+                    <div class="text-[11px] text-rose-300 font-medium mb-0.5"><i class="fa-solid fa-wallet mr-1.5"></i>Dự toán chi phí</div>
+                    <div class="text-xs sm:text-sm font-bold text-white">~1.890.000 VNĐ / 2 người</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-14">
+            <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto hide-scrollbar text-xs sm:text-sm font-medium py-1">
+                <button onclick="switchTab('all')" id="tab-all" class="tab-btn active px-4 py-1.5 rounded-full bg-ocean-700 text-white transition-all shadow-sm">
+                    Tất cả lịch trình
+                </button>
+                <button onclick="switchTab('day1')" id="tab-day1" class="tab-btn px-4 py-1.5 rounded-full text-slate-700 hover:bg-slate-100 transition-all">
+                    📍 Ngày 1 (30/08)
+                </button>
+                <button onclick="switchTab('day2')" id="tab-day2" class="tab-btn px-4 py-1.5 rounded-full text-slate-700 hover:bg-slate-100 transition-all">
+                    📍 Ngày 2 (31/08)
+                </button>
+                <button onclick="switchTab('day3')" id="tab-day3" class="tab-btn px-4 py-1.5 rounded-full text-slate-700 hover:bg-slate-100 transition-all">
+                    📍 Ngày 3 (01/09)
+                </button>
+            </div>
+            <div class="hidden md:flex items-center gap-2">
+                <a href="#checklist" class="text-xs font-bold px-3.5 py-1.5 rounded-xl bg-amber-50 text-amber-800 border border-amber-300 hover:bg-amber-100 transition">
+                    <i class="fa-solid fa-clipboard-list mr-1.5 text-amber-600"></i> Checklist Chuẩn Bị
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="bg-gradient-to-r from-ocean-900 via-ocean-800 to-cyan-950 text-white py-6 px-4 border-b border-slate-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-1">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-amber-300 flex items-center gap-2">
+                    <i class="fa-solid fa-water"></i> Bản Đồ Trải Nghiệm Liên Hoàn Các Bãi Biển Đẹp
+                </h2>
+                <span class="text-[11px] text-slate-300">Chạy xe dọc đại lộ biển Võ Nguyên Giáp - Trường Sa</span>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group cursor-pointer" onclick="openPhotoModal('Bãi biển Mỹ Khê', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80', 'Bãi biển Mỹ Khê trung tâm sầm uất, nhộn nhịp về đêm, gần Cầu Rồng & bến du thuyền.', 'https://maps.google.com/?cid=12140416972045610816')">
+                    <div class="text-xs font-bold text-cyan-200 mb-1 flex items-center justify-between">
+                        <span>1. Mỹ Khê</span>
+                        <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                    </div>
+                    <div class="text-[11px] text-slate-200">Sầm uất, dạo biển đêm nhộn nhịp.</div>
+                </div>
+
+                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group cursor-pointer" onclick="openPhotoModal('Bãi biển Bắc Mỹ An', 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1000&q=80', 'Bắc Mỹ An có bờ cát rộng mịn, lý tưởng đón bình minh và dạo biển đêm yên tĩnh.', 'https://maps.google.com/?cid=6206667797779322932')">
+                    <div class="text-xs font-bold text-amber-300 mb-1 flex items-center justify-between">
+                        <span>2. Bắc Mỹ An</span>
+                        <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                    </div>
+                    <div class="text-[11px] text-slate-200">Cát mịn, sóng êm, đón BÌNH MINH.</div>
+                </div>
+
+                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group cursor-pointer" onclick="openPhotoModal('Bãi biển Non Nước', 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80', 'Bãi biển Non Nước nằm dưới chân núi Ngũ Hành Sơn, bờ biển rộng hoang sơ.', 'https://maps.google.com/?cid=7216701684225598983')">
+                    <div class="text-xs font-bold text-emerald-300 mb-1 flex items-center justify-between">
+                        <span>3. Non Nước</span>
+                        <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                    </div>
+                    <div class="text-[11px] text-slate-200">Chân Ngũ Hành Sơn, thoáng đãng.</div>
+                </div>
+
+                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group cursor-pointer" onclick="openPhotoModal('Bãi biển An Bằng (Hội An)', 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1000&q=80', 'Cổng biển Hội An tuyệt đẹp với không gian beach bar mộc mạc thư thái.', 'https://maps.google.com/?cid=17081483334039810543')">
+                    <div class="text-xs font-bold text-amber-200 mb-1 flex items-center justify-between">
+                        <span>4. An Bằng</span>
+                        <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                    </div>
+                    <div class="text-[11px] text-slate-200">Cổng biển Hội An, thư thái lãng mạn.</div>
+                </div>
+
+                <div class="p-3 rounded-xl bg-white/10 border border-white/15 hover:border-amber-400 transition group cursor-pointer col-span-2 sm:col-span-1" onclick="openPhotoModal('Rạn Nam Ô', 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80', 'Rạn đá tự nhiên hoang sơ phía Bắc Vịnh Đà Nẵng, khung cảnh vô cùng điện ảnh.', 'https://maps.google.com/?cid=14733572167197901445')">
+                    <div class="text-xs font-bold text-cyan-300 mb-1 flex items-center justify-between">
+                        <span>5. Rạn Nam Ô</span>
+                        <i class="fa-regular fa-image text-[10px] text-amber-300"></i>
+                    </div>
+                    <div class="text-[11px] text-slate-200">Bãi đá rạn tự nhiên hoang sơ tuyệt đẹp.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full space-y-12">
+
+        <!-- ================= DAY 1 SECTION ================= -->
+        <section id="day1-section" class="day-card space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-ocean-100 text-ocean-700">Ngày 1 • 30/08/2026</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">Check-in Homestay • Đèo Hải Vân & Hoàng Hôn Đầm Lập An • Du Thuyền & Chợ Đêm</h2>
+                </div>
+                <div class="text-right hidden sm:block">
+                    <span class="text-xs text-slate-500 font-medium">Điểm nhấn chính</span>
+                    <div class="text-xs font-bold text-amber-600">Hoàng Hôn Đầm Lập An & Cầu Rồng 21:00</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                
+                <!-- STEP 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('December Homestay 2', 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80', 'December Homestay 2 nằm tại 19 Bằng Lăng 5, Hải Châu, cực gần Cầu Rồng, phòng ốc mộc mạc ấm cúng.', 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e')">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="December Homestay 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=December+Homestay+2'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 1</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>12:00 – 13:30</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Check-in Homestay & Nhận Xe Máy</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Nhận phòng tại <strong>December Homestay 2</strong> (19 Bằng Lăng 5). Cất vali gọn gàng, kiểm tra xe máy chuẩn bị xuất phát.</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-500"><i class="fa-solid fa-location-dot text-rose-500 mr-1"></i>19 Bằng Lăng 5, Đà Nẵng</span>
+                            <a href="https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e" target="_blank" class="text-ocean-600 font-bold hover:underline">Google Map <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Ẩm Thực Chợ Cồn', 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80', 'Khu ẩm thực Chợ Cồn nức tiếng với ốc hút hấp sả, bánh bèo chén, nem lụi nướng và chè sầu.', 'https://maps.google.com/?cid=5423764435960124639')">
+                        <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80" alt="Chợ Cồn" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Am+Thuc+Cho+Con'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 2</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>13:30 – 14:30</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Khám Phá Ẩm Thực Chợ Cồn</h3>
+                            <p class="text-xs text-slate-600 mb-2 leading-relaxed">Thưởng thức món ngon bản địa: ốc hút hấp sả, bánh bèo chén, nem lụi và ly chè sầu mát lạnh (~100k/2 người).</p>
+                            <div class="text-[11px] bg-amber-50 text-amber-800 p-2 rounded-lg mb-2 border border-amber-200"><i class="fa-solid fa-parking text-amber-600 mr-1"></i> Gửi xe cổng Hùng Vương (5k/xe)</div>
+                        </div>
+                        <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-500"><i class="fa-solid fa-utensils text-amber-500 mr-1"></i>Góc Hùng Vương</span>
+                            <a href="https://maps.google.com/?cid=5423764435960124639" target="_blank" class="text-ocean-600 font-bold hover:underline">Google Map <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3 HIGHLIGHT SUNSET LAP AN LAGOON -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border-2 border-amber-400 bg-gradient-to-br from-amber-50/70 to-orange-50/40 flex flex-col">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Hoàng Hôn Đầm Lập An', 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80', 'Khoảnh khắc hoàng hôn dát vàng cực đỉnh trên Đầm Lập An, khi mặt trời lặn sau dãy núi Bạch Mã phẳng lặng như gương.', 'https://maps.google.com/?cid=5553166078561578657')">
+                        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80" alt="Đầm Lập An Hoàng Hôn" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/d97706/ffffff?text=Hoang+Hon+Dam+Lap+An'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-amber-600 text-white shadow-md">STEP 3 ★ HOÀNG HÔN DÁT VÀNG</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-amber-300"></i>14:30 – 18:00</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Đèo Hải Vân & Hoàng Hôn Đầm Lập An</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Chinh phục khúc cua đèo núi → Đốn khoảnh khắc mặt trời lặn phản chiếu dát vàng mênh mông trên Đầm Lập An lúc 17:15 tuyệt đẹp.</p>
+                        </div>
+                        <div class="pt-3 border-t border-amber-200/80 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-600"><i class="fa-solid fa-sun text-amber-500 mr-1"></i>Lăng Cô, Thừa Thiên Huế</span>
+                            <a href="https://maps.google.com/?cid=5553166078561578657" target="_blank" class="text-ocean-600 font-bold hover:underline">Google Map <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4 -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Hải Sản Ven Biển', 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80', 'Bữa tối hải sản tươi ngon sát biển: chip chip hấp sả, mực nướng mắm thơm lừng, lẩu hải sản nhỏ.', 'https://maps.google.com/?cid=12140416972045610816')">
+                        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80" alt="Hải Sản" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Hai+San+Ven+Bien'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 4</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>18:00 – 20:00</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Xuôi Đèo & Bữa Tối Hải Sản Ven Biển</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Chạy xe thong thả về phố biển. Thưởng thức chip chip hấp sả, mực nướng mắm thơm phức, lẩu hải sản nhỏ tươi ngon (~300k/2 người).</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-500"><i class="fa-solid fa-fish text-ocean-500 mr-1"></i>Quán ven biển Nguyễn Tất Thành</span>
+                            <span class="text-slate-600 font-semibold">~300.000đ/2 người</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 5 HIGHLIGHT NIGHT CRUISE -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border-2 border-ocean-500 bg-gradient-to-br from-sky-50/70 to-cyan-50/40 flex flex-col">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Du Thuyền Sông Hàn & Cầu Rồng Phun Lửa', 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80', 'Du thuyền sông Hàn góc nhìn độc bản ngắm thành phố lung linh và xem Cầu Rồng phun lửa trực tiếp lúc 21:00.', 'https://maps.google.com/?cid=4330735287103870185')">
+                        <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80" alt="Du Thuyền Sông Hàn" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0369a1/ffffff?text=Du+Thuyen+Song+Han'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-ocean-600 text-white shadow-md">STEP 5 ★ ĐÊM SÔNG HÀN</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>20:15 – 21:15</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Du Thuyền Sông Hàn & Cầu Rồng Phun Lửa</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Lướt du thuyền lộng gió ngắm cầu lên đèn và ngắm Cầu Rồng phun lửa trực tiếp trên sông lúc <strong>21:00</strong> (150k/người).</p>
+                        </div>
+                        <div class="pt-3 border-t border-ocean-200 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-600"><i class="fa-solid fa-ship text-ocean-600 mr-1"></i>Bến Bạch Đằng</span>
+                            <a href="https://maps.google.com/?cid=4330735287103870185" target="_blank" class="text-ocean-600 font-bold hover:underline">Google Map <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 6 -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Chợ Đêm Sơn Trà & Mỹ Khê Đêm', 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80', 'Không khí náo nhiệt Chợ đêm Sơn Trà ăn vặt, kết hợp dạo bờ sóng biển Mỹ Khê về đêm.', 'https://maps.google.com/?cid=12140416972045610816')">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80" alt="Chợ Đêm Sơn Trà" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Cho+Dem+Son+Tra'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 6</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>21:15 – 22:30</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Chợ Đêm Sơn Trà & Dạo Biển Mỹ Khê Đêm</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Tản bộ sang Chợ đêm Sơn Trà ăn ly kem bơ nhẹ nhàng, sau đó đi thẳng Võ Văn Kiệt ra biển Mỹ Khê dạo bờ sóng đêm lung linh.</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-500"><i class="fa-solid fa-umbrella-beach text-amber-500 mr-1"></i>Mỹ Khê Đêm</span>
+                            <a href="https://maps.google.com/?cid=12140416972045610816" target="_blank" class="text-ocean-600 font-bold hover:underline">Google Map <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= DAY 2 SECTION ================= -->
+        <section id="day2-section" class="day-card space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-amber-100 text-amber-800">Ngày 2 • 31/08/2026</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">Bình Minh Bắc Mỹ An • Ghềnh Bàng • Nghỉ Trưa • Rừng Dừa & Phố Cổ Hội An</h2>
+                </div>
+                <div class="text-right hidden sm:block">
+                    <span class="text-xs text-slate-500 font-medium">Điểm nhấn chính</span>
+                    <div class="text-xs font-bold text-amber-600">Thuyền Hoa Đăng Sông Hoài & Múa Thúng</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                
+                <!-- DAY 2 STEP 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border-2 border-amber-300 bg-gradient-to-br from-amber-50/60 to-yellow-50/30 flex flex-col">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Bình Minh Biển Bắc Mỹ An', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80', 'Khung cảnh mặt trời mọc rực rỡ trên bờ cát mịn bãi biển Bắc Mỹ An yên tĩnh và bình yên.', 'https://maps.google.com/?cid=6206667797779322932')">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Bắc Mỹ An Sunrise" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/d97706/ffffff?text=Binh+Minh+Bac+My+An'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-amber-600 text-white">STEP 1 ★ BÌNH MINH</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-amber-300"></i>05:00 – 06:30</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Đốn Bình Minh Biển Bắc Mỹ An</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Dạo bước đón mặt trời mọc rực rỡ trên bờ cát mịn bãi biển Bắc Mỹ An yên tĩnh, thưởng thức cafe phin ấm sát bờ sóng (~40k/2 ly).</p>
+                        </div>
+                        <div class="pt-3 border-t border-amber-200 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-600"><i class="fa-solid fa-sun text-amber-500 mr-1"></i>Biển Bắc Mỹ An</span>
+                            <a href="https://maps.google.com/?cid=6206667797779322932" target="_blank" class="text-ocean-600 font-bold hover:underline">Google Map <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 2 STEP 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Ghềnh Bàng Sơn Trà', 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80', 'Ghềnh Bàng với bãi đá tự nhiên nhấp nhô tuyệt đẹp, nước biển xanh trong vút mắt.', 'https://maps.google.com/?cid=18071023613830469926')">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Ghềnh Bàng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Ghenh+Bang+Son+Tra'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 2</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>07:30 – 11:30</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Trek & Khám Phá Ghềnh Bàng</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Trekking ngắn đường mòn xuống bãi đá tự nhiên hoang sơ Sơn Trà, check-in làn nước biển xanh trong ngọc bích.</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-500"><i class="fa-solid fa-mountain text-emerald-600 mr-1"></i>Bán đảo Sơn Trà</span>
+                            <a href="https://maps.google.com/?cid=18071023613830469926" target="_blank" class="text-ocean-600 font-bold hover:underline">Google Map <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 2 STEP 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Nghỉ Trưa Homestay', 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80', 'Quay về December Homestay 2 (19 Bằng Lăng 5) tắm rửa thay đồ, nghỉ ngơi tránh nắng trưa nạp năng lượng.', 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e')">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Nghỉ trưa" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Nghi+Trua+Homestay'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 3</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>11:30 – 13:30</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Ăn Trưa & Nghỉ Trưa Homestay</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Ăn trưa Bánh tráng cuốn thịt heo Năm Hiền → Quay về phòng <strong>December Homestay 2</strong> tắm rửa, thay đồ nghỉ ngơi nạp năng lượng tránh nắng trưa gắt.</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-500"><i class="fa-solid fa-bed text-ocean-500 mr-1"></i>Nghỉ nạp năng lượng</span>
+                            <span class="text-slate-600 font-semibold">Tránh nắng 12h</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 2 STEP 4 -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Rừng Dừa Bảy Mẫu', 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80', 'Trải nghiệm chèo thuyền thúng múa thúng kịch tính xanh mướt Rừng dừa Cẩm Thanh.', 'https://maps.google.com/?cid=8318215151515312323')">
+                        <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80" alt="Rừng Dừa Bảy Mẫu" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Rung+Dua+Bay+Mau'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 4</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>13:30 – 16:30</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Phượt Đường Biển & Rừng Dừa Bảy Mẫu</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Chạy đại lộ biển Trường Sa vào Rừng dừa Cẩm Thanh. Trải nghiệm chèo thuyền thúng dập dềnh và xem múa thúng (Vé + thúng: 210k/2 người).</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-500"><i class="fa-solid fa-tree text-emerald-600 mr-1"></i>Cẩm Thanh, Hội An</span>
+                            <a href="https://maps.google.com/?cid=8318215151515312323" target="_blank" class="text-ocean-600 font-bold hover:underline">Google Map <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 2 STEP 5 HIGHLIGHT HOI AN SUNSET & NIGHT -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border-2 border-amber-400 bg-gradient-to-br from-amber-50/60 to-orange-50/30 flex flex-col lg:col-span-2">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Phố Cổ Hội An & Thả Hoa Đăng Sông Hoài', 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1000&q=80', 'Hoàng hôn rêu phong phố cổ Hội An kết hợp đi thuyền gỗ thả hoa đăng lung linh trên sông Hoài.', 'https://maps.google.com/?cid=16041945140456063900')">
+                        <img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1000&q=80" alt="Hội An Hoa Đăng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/1000x500/d97706/ffffff?text=Pho+Co+Hoi+An'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-amber-600 text-white shadow-md">STEP 5 ★ HOÀNG HÔN & ĐÊM PHỐ CỔ</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-amber-300"></i>16:30 – 20:00</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Hoàng Hôn Phố Cổ & Thả Hoa Đăng Sông Hoài</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Uống cafe Faifo ngắm mái ngói rêu phong hoàng hôn → Thưởng thức Nước Mót (30k), Cao Lầu, Bánh Mì → Thuê thuyền gỗ thả hoa đăng sông Hoài lung linh (100k/thuyền 2 người).</p>
+                        </div>
+                        <div class="pt-3 border-t border-amber-200 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-600"><i class="fa-solid fa-city text-amber-600 mr-1"></i>Phố cổ Hội An</span>
+                            <a href="https://maps.google.com/?cid=16041945140456063900" target="_blank" class="text-ocean-600 font-bold hover:underline">Google Map <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= DAY 3 SECTION ================= -->
+        <section id="day3-section" class="day-card space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-emerald-100 text-emerald-800">Ngày 3 • 01/09/2026</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">Sơn Trà Santorini • Trả Phòng 12:00 • Ghềnh Nam Ô & Hải Sản • Tiễn Bay</h2>
+                </div>
+                <div class="text-right hidden sm:block">
+                    <span class="text-xs text-slate-500 font-medium">Điểm nhấn chính</span>
+                    <div class="text-xs font-bold text-emerald-600">Thư Thái 10:00 & Hải Sản Nam Ô</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                
+                <!-- DAY 3 STEP 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Sơn Trà Marina (Santorini)', 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80', 'Quán cafe phong cách Santorini bên vách biển Sơn Trà, góc view biển cực sang mịn.', 'https://maps.google.com/?cid=10168728368308795887')">
+                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80" alt="Sơn Trà Marina" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Son+Tra+Marina'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 1</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>08:00 – 11:30</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Bán Đảo Sơn Trà & Cafe Santorini</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Check-in Hồ Xanh → Thưởng thức cafe phong cách Santorini tại Sơn Trà Marina (~80k/2 ly) → Chinh phục Đỉnh Bàn Cờ ngắm mây vờn.</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-500"><i class="fa-solid fa-camera text-ocean-500 mr-1"></i>Sơn Trà Marina</span>
+                            <a href="https://maps.google.com/?cid=10168728368308795887" target="_blank" class="text-ocean-600 font-bold hover:underline">Google Map <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 3 STEP 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border-2 border-amber-400 bg-gradient-to-br from-amber-50/60 to-orange-50/30 flex flex-col">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Trả Phòng 12:00 & Mì Quảng', 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80', 'Thưởng thức bát Mì Quảng Bà Mua đậm đà và quay về trả phòng homestay đúng 12:00 trưa.', 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e')">
+                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80" alt="Check-out & Mì Quảng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/d97706/ffffff?text=Mi+Quang+Ba+Mua'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-amber-600 text-white">STEP 2 ★ TRẢ PHÒNG</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-amber-300"></i>11:30 – 12:30</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Ăn Trưa Mì Quảng & Trả Phòng 12:00</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Ăn trưa Mì Quảng Bà Mua (~70k) → Quay về homestay hoàn tất thủ tục trả phòng đúng <strong>12:00 trưa</strong>, gửi vali lại quầy lễ tân.</p>
+                        </div>
+                        <div class="pt-3 border-t border-amber-200 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-600"><i class="fa-solid fa-bell text-amber-600 mr-1"></i>Check-out 12:00</span>
+                            <span class="text-slate-600 font-semibold">Gửi vali lễ tân</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 3 STEP 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Cafe Sân Vườn Trình', 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80', 'Không gian cà phê sân vườn hoài cổ, nhâm nhi cafe muối hoặc trà cốt dừa thư thả.', 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e')">
+                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80" alt="Cafe Sân Vườn" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=Trinh+Ca+Phe'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 3</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>12:30 – 14:00</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Nghỉ Trưa Cafe Sân Vườn Local</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Thưởng thức cafe muối / trà cốt dừa tại Reply 1988 hoặc Trình Cà Phê (~60k/2 ly), trò chuyện thư giãn không gian xanh mát hoài cổ.</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-500"><i class="fa-solid fa-mug-hot text-amber-600 mr-1"></i>Trình Cà Phê</span>
+                            <span class="text-slate-500">Xanh mát hoài cổ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 3 STEP 4 & 5 -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col lg:col-span-2">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Ghềnh Nam Ô & Hải Sản', 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80', 'Khu rạn đá Nam Ô hoang sơ rực rỡ dưới nắng chiều, địa điểm lý tưởng dạo biển chụp ảnh.', 'https://maps.google.com/?cid=14733572167197901445')">
+                        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80" alt="Rạn Nam Ô" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/1000x500/0c4a6e/ffffff?text=Ran+Nam+O'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 4 & 5</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>14:00 – 18:30</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Ghềnh Nam Ô & Bữa Tối Hải Sản Nam Ô</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Khám phá khu rạn đá Nam Ô hoang sơ, dạo bờ sóng chụp ảnh kỷ niệm → Thưởng thức Gỏi cá Nam Ô bản địa hoặc mực nướng/lẩu hải sản ven biển (~300k/2 người).</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-500"><i class="fa-solid fa-water text-cyan-600 mr-1"></i>Rạn Nam Ô</span>
+                            <a href="https://maps.google.com/?cid=14733572167197901445" target="_blank" class="text-ocean-600 font-bold hover:underline">Google Map <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 3 STEP 6 -->
+                <div class="glass-card rounded-2xl overflow-hidden img-card border border-slate-200 flex flex-col">
+                    <div class="relative h-44 overflow-hidden group cursor-pointer" onclick="openPhotoModal('Sân Bay Đà Nẵng', 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80', 'Chia tay tại Sân bay Đà Nẵng lúc 19:15 sau chuyến đi 3 ngày 2 đêm đong đầy kỷ niệm.', 'https://www.google.com/maps/place/December+Homestay+2/@16.0560291,108.2319603,17z/data=!3m1!4b1!4m6!3m5!1s0x3142195849dec02d:0x8784882f991a546e')">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80" alt="Tiễn bay" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x500/0c4a6e/ffffff?text=San+Bay+Da+Nang'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <span class="absolute top-3 left-3 text-[11px] font-black px-2.5 py-1 rounded-full bg-slate-900/80 text-white backdrop-blur-md">STEP 6</span>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white"><i class="fa-regular fa-clock mr-1 text-cyan-300"></i>18:30 – 19:15</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Nhận Hành Lý & Tiễn Bay</h3>
+                            <p class="text-xs text-slate-600 mb-3 leading-relaxed">Quay về December Homestay 2 nhận vali gửi → Tiễn bạn đón xe về nhà tại Đà Nẵng / Làm thủ tục chuyến bay 21:00 về TP.HCM lúc 19:15.</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-500"><i class="fa-solid fa-plane text-ocean-600 mr-1"></i>Sân bay Đà Nẵng</span>
+                            <span class="text-slate-600 font-semibold">Cách homestay ~3km</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= BUDGET SUMMARY SECTION ================= -->
+        <section class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+            <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-6 mb-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Dự Toán Chi Phí Tiết Kiệm Tối Ưu</span>
+                    <h2 class="text-2xl font-extrabold text-white mt-1">Tổng Chi Phí: ~1.890.000 VNĐ / 2 Người</h2>
+                    <p class="text-xs text-slate-400 mt-1">*Chưa bao gồm vé máy bay & phòng December Homestay 2 đã thanh toán trước.</p>
+                </div>
+                <div class="px-4 py-2 rounded-2xl bg-amber-500/15 border border-amber-400/30 text-amber-300 font-bold text-lg">
+                    ~945.000 VNĐ / Người
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-md">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-slate-400 font-medium">Ngày 1</span>
+                        <span class="text-xs font-bold text-cyan-400">700.000đ</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed">Chợ Cồn (100k), Hải sản tối (300k), Vé Du thuyền (300k), Chợ đêm & Mỹ Khê.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-md">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-slate-400 font-medium">Ngày 2</span>
+                        <span class="text-xs font-bold text-amber-400">580.000đ</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed">Cafe bình minh (40k), Vé Rừng dừa & thúng (210k), Cafe Hội An (230k), Hoa đăng (100k).</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-md">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-slate-400 font-medium">Ngày 3</span>
+                        <span class="text-xs font-bold text-emerald-400">510.000đ</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed">Cafe Sơn Trà (80k), Mì Quảng (70k), Cafe nghỉ trưa (60k), Hải sản Nam Ô (300k).</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-md">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-slate-400 font-medium">Xe máy & Gửi xe</span>
+                        <span class="text-xs font-bold text-amber-300">100.000đ</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed">Xăng xe 3 ngày (~70k) + Tiền gửi xe các điểm tham quan (~30k).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= LUGGAGE CHECKLIST SECTION ================= -->
+        <section id="checklist" class="glass-card rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-ocean-700">Checklist Chuẩn Bị Hành Lý</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">Vật Dụng Thiết Yếu Cho Chuyến Đi</h2>
+                </div>
+                <div class="text-xs font-semibold text-slate-700 bg-slate-100 px-3.5 py-1.5 rounded-full border border-slate-200 self-start sm:self-auto">
+                    <span id="checked-count" class="font-bold text-ocean-600">0</span> / 6 Mục đã sẵn sàng
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-200 rounded-full h-2 mb-6 overflow-hidden">
+                <div id="checklist-progress" class="bg-gradient-to-r from-ocean-500 to-amber-500 h-2 rounded-full w-0 transition-all duration-300"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                <label class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition cursor-pointer">
+                    <input type="checkbox" class="checklist-item mt-1 w-4 h-4 text-ocean-600 rounded border-slate-300 focus:ring-ocean-500" onchange="updateChecklist()">
+                    <div>
+                        <div class="text-xs font-bold text-slate-900">Giày thể thao bám tốt</div>
+                        <div class="text-[11px] text-slate-500">Bắt buộc dùng khi trekking bãi đá Ghềnh Bàng & Nam Ô tránh trơn trượt.</div>
+                    </div>
+                </label>
+                <label class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition cursor-pointer">
+                    <input type="checkbox" class="checklist-item mt-1 w-4 h-4 text-ocean-600 rounded border-slate-300 focus:ring-ocean-500" onchange="updateChecklist()">
+                    <div>
+                        <div class="text-xs font-bold text-slate-900">Trang phục thoải mái & đồ chụp ảnh đẹp</div>
+                        <div class="text-[11px] text-slate-500">Đồ thoáng mát chạy xe & 1 bộ xinh xắn chụp hoàng hôn Hội An / Sơn Trà.</div>
+                    </div>
+                </label>
+                <label class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition cursor-pointer">
+                    <input type="checkbox" class="checklist-item mt-1 w-4 h-4 text-ocean-600 rounded border-slate-300 focus:ring-ocean-500" onchange="updateChecklist()">
+                    <div>
+                        <div class="text-xs font-bold text-slate-900">Túi Y Tế Cá Nhân & Kem Chống Nắng</div>
+                        <div class="text-[11px] text-slate-500">Băng cá nhân, oxy trùng, xịt chống muỗi, kem chống nắng SPF50+, khăn giấy ướt.</div>
+                    </div>
+                </label>
+                <label class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition cursor-pointer">
+                    <input type="checkbox" class="checklist-item mt-1 w-4 h-4 text-ocean-600 rounded border-slate-300 focus:ring-ocean-500" onchange="updateChecklist()">
+                    <div>
+                        <div class="text-xs font-bold text-slate-900">Áo khoác mỏng cản gió</div>
+                        <div class="text-[11px] text-slate-500">Giữ ấm khi chạy xe trên Đèo Hải Vân & dạo biển đêm gió lạnh.</div>
+                    </div>
+                </label>
+                <label class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition cursor-pointer">
+                    <input type="checkbox" class="checklist-item mt-1 w-4 h-4 text-ocean-600 rounded border-slate-300 focus:ring-ocean-500" onchange="updateChecklist()">
+                    <div>
+                        <div class="text-xs font-bold text-slate-900">Giấy tờ cá nhân & Bằng lái xe</div>
+                        <div class="text-[11px] text-slate-500">CCCD, Giấy phép lái xe máy, thông tin vé máy bay lượt về 21:00.</div>
+                    </div>
+                </label>
+                <label class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition cursor-pointer">
+                    <input type="checkbox" class="checklist-item mt-1 w-4 h-4 text-ocean-600 rounded border-slate-300 focus:ring-ocean-500" onchange="updateChecklist()">
+                    <div>
+                        <div class="text-xs font-bold text-slate-900">Túi chống nước điện thoại & Sạc dự phòng</div>
+                        <div class="text-[11px] text-slate-500">Bảo vệ điện thoại khi đi thuyền thúng Rừng Dừa & thả hoa đăng sông Hoài.</div>
+                    </div>
+                </label>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PHOTO PREVIEW LIGHTBOX MODAL -->
+    <div id="photo-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl overflow-hidden max-w-2xl w-full shadow-2xl relative border border-slate-200 transform transition-all">
+            <button onclick="closePhotoModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-slate-900/60 text-white flex items-center justify-center hover:bg-slate-900 transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="relative h-72 sm:h-96 w-full overflow-hidden bg-slate-900">
+                <img id="modal-img" src="" alt="Photo Preview" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6 bg-white">
+                <h3 id="modal-title" class="text-xl font-extrabold text-slate-900 mb-2"></h3>
+                <p id="modal-desc" class="text-xs sm:text-sm text-slate-600 mb-4 leading-relaxed"></p>
+                <div class="flex items-center justify-between border-t border-slate-100 pt-4">
+                    <span class="text-xs text-amber-600 font-semibold"><i class="fa-solid fa-camera mr-1.5"></i>Tọa độ check-in thực tế</span>
+                    <a id="modal-map-link" href="#" target="_blank" class="text-xs font-bold text-white px-4 py-2 rounded-xl bg-ocean-600 hover:bg-ocean-700 transition">
+                        Mở Google Maps <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-400 text-center py-8 text-xs border-t border-slate-800 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 space-y-2">
+            <p class="font-display font-semibold text-slate-200 text-sm">Chuyến Khám Phá Nắng Vàng & Biển Xanh Đà Nẵng - Hội An</p>
+            <p>© 2026 Hành trình trải nghiệm 3 Ngày 2 Đêm (30/08 – 01/09/2026)</p>
+        </div>
+    </footer>
+
+    <script>
+        // Photo Modal Logic
+        function openPhotoModal(title, imgSrc, desc, mapUrl) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-img').src = imgSrc;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('modal-map-link').href = mapUrl;
+            document.getElementById('photo-modal').classList.remove('hidden');
+        }
+
+        function closePhotoModal() {
+            document.getElementById('photo-modal').classList.add('hidden');
+        }
+
+        // Close modal when clicking outside content
+        document.getElementById('photo-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePhotoModal();
+            }
+        });
+
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-ocean-700', 'text-white', 'shadow-sm');
+                btn.classList.add('text-slate-700');
+            });
+
+            const activeBtn = document.getElementById('tab-' + tabId);
+            if(activeBtn) {
+                activeBtn.classList.add('bg-ocean-700', 'text-white', 'shadow-sm');
+                activeBtn.classList.remove('text-slate-700');
+            }
+
+            const day1 = document.getElementById('day1-section');
+            const day2 = document.getElementById('day2-section');
+            const day3 = document.getElementById('day3-section');
+
+            if (tabId === 'all') {
+                day1.style.display = 'block';
+                day2.style.display = 'block';
+                day3.style.display = 'block';
+            } else if (tabId === 'day1') {
+                day1.style.display = 'block';
+                day2.style.display = 'none';
+                day3.style.display = 'none';
+            } else if (tabId === 'day2') {
+                day1.style.display = 'none';
+                day2.style.display = 'block';
+                day3.style.display = 'none';
+            } else if (tabId === 'day3') {
+                day1.style.display = 'none';
+                day2.style.display = 'none';
+                day3.style.display = 'block';
+            }
+        }
+
+        // Checklist Counter & Progress Logic
+        function updateChecklist() {
+            const checkboxes = document.querySelectorAll('.checklist-item');
+            let checked = 0;
+            checkboxes.forEach(cb => {
+                if (cb.checked) checked++;
+            });
+            document.getElementById('checked-count').innerText = checked;
+            const percentage = (checked / checkboxes.length) * 100;
+            document.getElementById('checklist-progress').style.width = percentage + '%';
+        }
+
+        // Countdown Timer Logic
+        function updateCountdown() {
+            const tripDate = new Date('2026-08-30T12:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = tripDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('countdown-timer').innerText = "🎉 Chuyến đi đang diễn ra!";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById('countdown-timer').innerText = `${days} Ngày ${hours} Giờ ${minutes} Phút`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+    </script>
+</body>
+</html>
