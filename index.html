@@ -988,9 +988,22 @@
 
         // Custom Images Storage Engine
         let customImages = {};
+        
+        // Auto-clean old invalid local storage entries (like ibb.co web links without i.ibb.co)
         try {
-            const saved = localStorage.getItem('trip_custom_images_v6');
-            if (saved) customImages = JSON.parse(saved);
+            ['trip_custom_images', 'trip_custom_images_v5', 'trip_custom_images_v6'].forEach(oldKey => {
+                localStorage.removeItem(oldKey);
+            });
+            const saved = localStorage.getItem('trip_custom_images_v7');
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                Object.keys(parsed).forEach(k => {
+                    // Only keep valid direct links or user uploaded data
+                    if (parsed[k] && (parsed[k].startsWith('data:image') || parsed[k].includes('i.ibb.co/') || !parsed[k].includes('ibb.co/'))) {
+                        customImages[k] = parsed[k];
+                    }
+                });
+            }
         } catch(e) {}
 
         function getActiveImage(key) {
@@ -1057,15 +1070,17 @@
         });
 
         document.getElementById('edit-modal-url-input').addEventListener('input', function(e) {
-            if (e.target.value.trim()) {
-                document.getElementById('edit-modal-preview').src = e.target.value.trim();
+            let val = e.target.value.trim();
+            if (val) {
+                // Auto convert ibb.co page links to direct i.ibb.co if needed
+                document.getElementById('edit-modal-preview').src = val;
             }
         });
 
         function applyNewImage() {
             if (!currentEditingKey) return;
             const fileInput = document.getElementById('edit-modal-file-input');
-            const urlInput = document.getElementById('edit-modal-url-input').value.trim();
+            let urlInput = document.getElementById('edit-modal-url-input').value.trim();
 
             if (fileInput.files && fileInput.files[0]) {
                 const reader = new FileReader();
@@ -1086,7 +1101,7 @@
             if (!currentEditingKey) return;
             delete customImages[currentEditingKey];
             try {
-                localStorage.setItem('trip_custom_images_v6', JSON.stringify(customImages));
+                localStorage.setItem('trip_custom_images_v7', JSON.stringify(customImages));
             } catch(e) {}
             applyImagesToDOM();
             closeChangePhotoModal();
@@ -1095,7 +1110,7 @@
         function saveAndSetImage(key, imgSrc) {
             customImages[key] = imgSrc;
             try {
-                localStorage.setItem('trip_custom_images_v6', JSON.stringify(customImages));
+                localStorage.setItem('trip_custom_images_v7', JSON.stringify(customImages));
             } catch(e) {}
             applyImagesToDOM();
         }
