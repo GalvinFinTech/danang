@@ -988,7 +988,7 @@
         // Custom Images Storage Engine
         let customImages = {};
         try {
-            const saved = localStorage.getItem('trip_custom_images_v4');
+            const saved = localStorage.getItem('trip_custom_images_v5');
             if (saved) customImages = JSON.parse(saved);
         } catch(e) {}
 
@@ -1084,7 +1084,7 @@
             if (!currentEditingKey) return;
             delete customImages[currentEditingKey];
             try {
-                localStorage.setItem('trip_custom_images_v4', JSON.stringify(customImages));
+                localStorage.setItem('trip_custom_images_v5', JSON.stringify(customImages));
             } catch(e) {}
             applyImagesToDOM();
             closeChangePhotoModal();
@@ -1093,7 +1093,7 @@
         function saveAndSetImage(key, imgSrc) {
             customImages[key] = imgSrc;
             try {
-                localStorage.setItem('trip_custom_images_v4', JSON.stringify(customImages));
+                localStorage.setItem('trip_custom_images_v5', JSON.stringify(customImages));
             } catch(e) {}
             applyImagesToDOM();
         }
